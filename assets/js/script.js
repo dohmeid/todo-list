@@ -60,8 +60,26 @@ function deleteTask() {
 
 /**************************************************************************************/
 //function to handle search queries
-function searchForm() {
+function searchTask() {
   document.getElementById("search").nodeValue;
+}
+
+// Function to handle search queries
+function searchTask() {
+  const searchInput = document.getElementById("search").value.toLowerCase(); // Get the search query and convert it to lowercase
+  const tableRows = document.querySelectorAll("#table-body tr"); // Get all the table rows
+
+  // Loop through each table row
+  tableRows.forEach((row) => {
+    const taskDescription = row.cells[1].textContent.toLowerCase(); // Get the task description and convert it to lowercase
+
+    // Check if the task description contains the search query
+    if (taskDescription.includes(searchInput)) {
+      row.style.display = ""; // Show the row if it matches the search query
+    } else {
+      row.style.display = "none"; // Hide the row if it doesn't match the search query
+    }
+  });
 }
 
 //done task button functionality
