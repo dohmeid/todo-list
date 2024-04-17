@@ -1,0 +1,158 @@
+:root {
+    --grey-shade: rgb(119, 118, 118);
+    --medium-grey: darkgrey;
+    --medium-grey2: rgb(223, 222, 222);
+    --light-grey-shade: rgb(239, 238, 238);
+    --green-tick: #4CBB17;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Trebuchet MS', sans-serif;
+    height: 100%;
+    width: 100%;
+}
+
+button,
+input,
+label {
+    cursor: pointer;
+}
+
+/******************************************************************/
+/*styling the header*/
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+/******************************************************************/
+/*styling the form*/
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 2rem 0;
+
+    & .addition-container {
+        margin-bottom: 1rem;
+
+        & input[type="text"] {
+            min-height: 2em;
+            width: 15rem;
+        }
+    }
+
+    & input[type="search"],
+    input[type="text"] {
+        border-radius: 0.2rem;
+        border: 1px solid var(--medium-grey);
+        padding-inline-start: 0.8rem;
+
+        &::placeholder {
+            color: var(--grey-shade);
+            opacity: 0.9;
+        }
+    }
+
+    & input[type="search"] {
+        min-height: 2.4em;
+        width: 30rem;
+    }
+}
+
+/******************************************************************/
+/*styling the tasks table*/
+table {
+    width: 90%;
+    border-collapse: collapse;
+
+    /*table header*/
+    & thead {
+        height: 2rem;
+        background-color: var(--light-grey-shade);
+
+        tr th {
+            text-align: center;
+        }
+    }
+
+    /*table body*/
+    & tbody {
+
+        & tr {
+            height: 3rem;
+            border-bottom: 1px solid var(--medium-grey2);
+
+            & th,
+            td {
+                text-align: center;
+            }
+        }
+    }
+
+}
+
+/******************************************************************/
+/*actions buttons*/
+button {
+    color: white;
+    padding: 0.35rem 0.6rem;
+    border-radius: 0.3rem;
+    border: 2px solid transparent;
+
+    &:hover {
+        opacity: 0.7;
+        border: 2px solid lightgrey;
+        transition: 0.7s;
+    }
+
+    &:focus {
+        /*for keyboard interactions*/
+        border-color: var(--medium-grey);
+    }
+}
+
+.addBtn,
+.deleteBtn {
+    background-color: red;
+}
+
+.doneBtn {
+    background-color: var(--green-tick);
+}
+
+/******************************************************************/
+/*styling the footer*/
+footer{
+    margin-top: 1rem;
+}
+
+/******************************************************************/
+/*media queries*/
+@media (max-width: 600px) {
+    body {
+        font-size: 8px;
+    }
+
+    form {
+        width: 300px;
+    }
+}
