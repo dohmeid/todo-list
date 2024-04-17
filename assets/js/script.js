@@ -1,3 +1,5 @@
+deleteTask(); //intilally delete the tasks event trigger
+
 /**************************************************************************************/
 //Add new TODO task
 const newTaskInput = document.getElementById("new-task-input");
@@ -24,6 +26,8 @@ function addTask() {
   table.appendChild(row);
   newTaskInput.value = "";
 
+  deleteTask();
+
   updateCounter();
 }
 
@@ -35,26 +39,20 @@ function searchForm() {
 
 /**************************************************************************************/
 //Task buttons actions functionality
-//delete task button functionality
-const row = table.querySelector("tr");
-const deleteButtons = row.querySelector(".delete-btn");
-
-/*
-deleteButtons.addEventListener("click", function () {
-  if (confirm("Are you sure you want to delete this task?")) {
-    // const row = this.closest("tr"); // Get the corresponding table row
-    // const tbody = row.parentNode; // Get the parent tbody element
-    // tbody.removeChild(row); // Remove the table row from the tbody
-    //tr.removeChild;
-    table.removeChild;
-    updateCounter();
+function deleteTask() {
+  //delete task button functionality
+  const deleteButtons = document.querySelectorAll(".deleteBtn");
+  for (deleteBtn of deleteButtons) {
+    deleteBtn.addEventListener("click", function () {
+      if (confirm("Are you sure you want to delete this task?")) {
+        const row = this.closest("tr"); // Get the corresponding table row
+        //const row = this.parentNode.parentNode.rowIndex;
+        table.deleteRow(row);
+        updateCounter();
+      }
+    });
   }
-});
-
-function deleteTask(event) {
-  const task = event.target.parentNode;
-  table.removeChild(task);
-}*/
+}
 
 //done task button functionality
 //const doneBtn = tr.querySelector(".doneBtn");
