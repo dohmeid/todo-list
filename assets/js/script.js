@@ -13,10 +13,10 @@ function addTask() {
   }
 
   const row = document.createElement("tr");
-  row.innerHTML = `<td>1</td>
+  row.innerHTML = `<td>${totalTasks + 1}</td>
      <td>${newTask}</td>
      <td>22</td>
-     <td>In progress</td>
+     <td>Pending</td>
      <td>
         <button type="submit" class="deleteBtn">Delete</button>
         <button type="submit" class="doneBtn">Done</button>
@@ -35,7 +35,6 @@ function deleteTask() {
   table.addEventListener("click", function (event) {
     if (event.target.classList.contains("deleteBtn")) {
       if (confirm("Are you sure you want to delete this task?")) {
-        //let row = this.parentNode.parentNode.rowIndex;
         let row = event.target.closest("tr");
         console.log("this is the row index to delete" + row);
         row.remove();
@@ -44,6 +43,15 @@ function deleteTask() {
     }
 
     if (event.target.classList.contains("doneBtn")) {
+      //let state = event.parentNode.
+      let state = event.target.parentNode.previousElementSibling;
+      console.log(event.target.parentNode);
+      console.log(event.target.parentNode.previousElementSibling);
+      state.textContent = "Completed";
+
+      let row = event.target.closest("tr");
+      //mark the row as Completed class name to add visual indication to distinguish between completed and pending tasks.
+      row.classList.add("completed-task");
     }
   });
 }
