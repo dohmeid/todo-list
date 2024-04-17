@@ -36,10 +36,11 @@ function deleteTask() {
     if (event.target.classList.contains("deleteBtn")) {
       if (confirm("Are you sure you want to delete this task?")) {
         let row = event.target.closest("tr");
-        console.log("this is the row index to delete" + row);
+        let rowIndex = row.rowIndex - 1;
+        console.log("this is the row index to delete" + rowIndex);
         row.remove();
         updateCounter();
-        updateIDs();
+        updateIDs(rowIndex);
       }
     }
 
@@ -81,9 +82,9 @@ function updateCounter() {
 
 /*****************************************/
 //update the rows IDs when a task/row is deleted from
-function updateIDs() {
+function updateIDs(startIndex) {
   const rows = table.getElementsByTagName("tr"); //Get all the rows of the table
-  for (let i = 0; i < rows.length; i++) {
+  for (let i = startIndex; i < rows.length; i++) {
     // Get the first td of the current row = id
     const ID = rows[i].getElementsByTagName("td")[0];
     ID.textContent = i + 1;
