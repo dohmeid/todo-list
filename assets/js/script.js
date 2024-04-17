@@ -39,6 +39,7 @@ function deleteTask() {
         console.log("this is the row index to delete" + row);
         row.remove();
         updateCounter();
+        updateIDs();
       }
     }
 
@@ -76,4 +77,15 @@ counter.textContent = totalTasks; //intiallly set the counter's value
 function updateCounter() {
   totalTasks = table.rows.length;
   counter.textContent = totalTasks;
+}
+
+/*****************************************/
+//update the rows IDs when a task/row is deleted from
+function updateIDs() {
+  const rows = table.getElementsByTagName("tr"); //Get all the rows of the table
+  for (let i = 0; i < rows.length; i++) {
+    // Get the first td of the current row = id
+    const ID = rows[i].getElementsByTagName("td")[0];
+    ID.textContent = i + 1;
+  }
 }
