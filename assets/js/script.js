@@ -5,7 +5,7 @@ const table = document.getElementById("table-body");
 
 function addTask() {
   const newTask = newTaskInput.value.trim();
-  
+
   //ensure empty tasks are not added.
   if (!newTask) {
     alert("Please write down a task");
@@ -36,29 +36,38 @@ function searchForm() {
 /**************************************************************************************/
 //Task buttons actions functionality
 //delete task button functionality
-const deleteButtons = document.querySelectorAll(".delete-btn");
-deleteButtons.forEach((button) => {
-  button.addEventListener("click", function () {
-    if (confirm("Are you sure you want to delete this task?")) {
-      const row = this.closest("tr"); // Get the corresponding table row
-      const tbody = row.parentNode; // Get the parent tbody element
-      tbody.removeChild(row); // Remove the table row from the tbody
-      updateCounter();
-    }
-  });
+const row = table.querySelector("tr");
+const deleteButtons = row.querySelector(".delete-btn");
+
+/*
+deleteButtons.addEventListener("click", function () {
+  if (confirm("Are you sure you want to delete this task?")) {
+    // const row = this.closest("tr"); // Get the corresponding table row
+    // const tbody = row.parentNode; // Get the parent tbody element
+    // tbody.removeChild(row); // Remove the table row from the tbody
+    //tr.removeChild;
+    table.removeChild;
+    updateCounter();
+  }
 });
+
+function deleteTask(event) {
+  const task = event.target.parentNode;
+  table.removeChild(task);
+}*/
 
 //done task button functionality
 //const doneBtn = tr.querySelector(".doneBtn");
 
 /**************************************************************************************/
 //to update the tasks counter
+var totalTasks = 0;
 const counter = document.getElementById("tasks-counter");
-var rowCount = table.rows.length; // Count the number of rows in the table
-counter.textContent = rowCount; //intiallly set the counter's value
+totalTasks = table.rows.length; // Count the number of rows in the table
+counter.textContent = totalTasks; //intiallly set the counter's value
 
 //this function is called when adding a new task and deleting a task to update the counters value
 function updateCounter() {
-  rowCount = table.rows.length;
-  counter.textContent = rowCount;
+  totalTasks = table.rows.length;
+  counter.textContent = totalTasks;
 }
