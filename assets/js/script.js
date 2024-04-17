@@ -1,5 +1,3 @@
-deleteTask(); //intilally delete the tasks event trigger
-
 /**************************************************************************************/
 //Add new TODO task
 const newTaskInput = document.getElementById("new-task-input");
@@ -25,33 +23,35 @@ function addTask() {
      </td>`;
   table.appendChild(row);
   newTaskInput.value = "";
-
-  deleteTask();
-
   updateCounter();
+}
+
+/**************************************************************************************/
+//Task buttons actions functionality
+deleteTask(); //intilally delete the tasks event trigger
+
+function deleteTask() {
+  //here event delegation was used to handle the click events
+  table.addEventListener("click", function (event) {
+    if (event.target.classList.contains("deleteBtn")) {
+      if (confirm("Are you sure you want to delete this task?")) {
+        //let row = this.parentNode.parentNode.rowIndex;
+        let row = event.target.closest("tr");
+        console.log("this is the row index to delete" + row);
+        row.remove();
+        updateCounter();
+      }
+    }
+
+    if (event.target.classList.contains("doneBtn")) {
+    }
+  });
 }
 
 /**************************************************************************************/
 //function to handle search queries
 function searchForm() {
   document.getElementById("search").nodeValue;
-}
-
-/**************************************************************************************/
-//Task buttons actions functionality
-function deleteTask() {
-  //delete task button functionality
-  const deleteButtons = document.querySelectorAll(".deleteBtn");
-  for (deleteBtn of deleteButtons) {
-    deleteBtn.addEventListener("click", function () {
-      if (confirm("Are you sure you want to delete this task?")) {
-        const row = this.closest("tr"); // Get the corresponding table row
-        //const row = this.parentNode.parentNode.rowIndex;
-        table.deleteRow(row);
-        updateCounter();
-      }
-    });
-  }
 }
 
 //done task button functionality
