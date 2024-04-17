@@ -11,18 +11,21 @@ function addTask() {
     alert("Please write down a task");
     return;
   }
+  addTaskToTable(totalTasks + 1, newTask, "01", "Pending");
+  newTaskInput.value = "";
+}
 
+function addTaskToTable(id, description, userID, status) {
   const row = document.createElement("tr");
-  row.innerHTML = `<td>${totalTasks + 1}</td>
-     <td>${newTask}</td>
-     <td>22</td>
-     <td>Pending</td>
+  row.innerHTML = `<td>${id}</td>
+     <td>${description}</td>
+     <td>${userID}</td>
+     <td>${status}</td>
      <td>
         <button type="submit" class="deleteBtn">Delete</button>
         <button type="submit" class="doneBtn">Done</button>
      </td>`;
   table.appendChild(row);
-  newTaskInput.value = "";
   updateCounter();
 }
 
@@ -108,3 +111,40 @@ function updateIDs(startIndex) {
     ID.textContent = i + 1;
   }
 }
+
+/*********************************8 */
+//fetch the data from the given API
+// Function to fetch and display data from the API
+function fetchData() {
+  fetch("https://dummyjson.com/todos")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      // Process the fetched data and display it on the website
+      //displayData(data);
+      // Access the key-value pairs of each todo item
+      data.todos.forEach((todo) => {
+        // Access the key-value pairs of each todo item
+        for (const key in todo) {
+          console.log(`${key}: ${todo[key]}`);
+        }
+        let state = "Pending";
+        if (todo.completed) {
+          state = "Completed";
+        }
+
+        addTaskToTable(todo.id, todo.todo, todo.userId, state);
+        console.log("--------------"); // Separating each todo item
+      });
+    })
+    .catch((error) => {
+      console.error("There was a problem with the fetch operation:", error);
+    });
+}
+
+// Call the fetchData function to initiate the data fetching process
+fetchData();
