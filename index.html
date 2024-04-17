@@ -11,10 +11,12 @@
         It also interacts with the a dummy API to retrieve the initial TODO list.">
     <meta name="keywords" content="todo-list, list, tasks, management, addition, searching, CRUD operations">
 
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="icon" type="image/x-icon" sizes="16x16 32x32 48x48" href="list.ico">
+
+    <link rel="icon" type="image/x-icon" sizes="16x16 32x32 48x48" href="assets/images/list.ico">
     <!--including font awesome v4 icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 
 <body>
@@ -25,9 +27,9 @@
     <form>
         <!--Adding a new task input-->
         <div class="addition-container">
-            <input type="text" id="new-task" class="new-task" name="new-task" aria-label="input for creating a new task"
-                placeholder="Add new task..." tabindex="1">
-            <button type="submit" id="addBtn" class="addBtn" tabindex="10" onclick="addTask()">Add</button>
+            <input type="text" id="new-task-input" class="new-task-input" name="new-task-input"
+                aria-label="input for creating a new task" placeholder="Add new task..." tabindex="1">
+            <button type="button" id="addBtn" class="addBtn" tabindex="10" onclick="addTask()">Add</button>
         </div>
 
         <!--Search Bar-->
@@ -37,7 +39,7 @@
 
 
     <!--Tasks Table-->
-    <table>
+    <table id="tasks-table">
         <thead>
             <tr>
                 <th scope="col">ID</th>
@@ -47,9 +49,9 @@
                 <th scope="col">Actions</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="table-body">
             <tr>
-                <td scope="row">1</td>
+                <td>1</td>
                 <td>Buy groceries for next week</td>
                 <td>22</td>
                 <td>In progress</td>
@@ -60,7 +62,7 @@
             </tr>
 
             <tr>
-                <td scope="row">1</td>
+                <td>1</td>
                 <td>Buy groceries for next week</td>
                 <td>22</td>
                 <td>In progress</td>
@@ -74,10 +76,10 @@
     </table>
 
     <footer>
-        <p>Total tasks: 5</p>
+        <p id="tasks-counter">Total tasks: 5</p>
     </footer>
 
-    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="assets/js/script.js"></script>
 </body>
 
 </html>
