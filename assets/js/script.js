@@ -25,6 +25,10 @@ function addTaskToTable(id, description, userID, status) {
         <button type="submit" class="deleteBtn">Delete</button>
         <button type="submit" class="doneBtn">Done</button>
      </td>`;
+
+  if (status == "Completed") {
+    row.classList.add("completed-task");
+  }
   table.appendChild(row);
   updateCounter();
 }
@@ -148,3 +152,35 @@ function fetchData() {
 
 // Call the fetchData function to initiate the data fetching process
 fetchData();
+
+/***************8888 */
+//the storage objects
+
+// Function to save TODO list data to LocalStorage
+function saveDataToLocalStorage() {
+  // Get all table rows from the DOM
+  const tableRows = document.querySelectorAll("tbody tr");
+
+  // Initialize an array to store TODO items
+  const todos = [];
+
+  // Loop through each table row
+  tableRows.forEach((row) => {
+    // Extract data from each row
+    const id = row.cells[0].textContent;
+    const todo = row.cells[1].textContent;
+    const completed = row.cells[3].textContent === "Completed";
+    const userId = parseInt(row.cells[2].textContent); // Assuming userId is a number
+
+    // Create a TODO object and push it to the array
+    const todoItem = { id, todo, completed, userId };
+    todos.push(todoItem);
+  });
+
+  // Save the TODO list data to LocalStorage
+  localStorage.setItem("todos", JSON.stringify(todos));
+  console.log("Data saved to LocalStorage.");
+}
+
+// Call the saveDataToLocalStorage function to save data when needed
+// For example, you can call this function when the user performs some action like adding, updating, or deleting a TODO item

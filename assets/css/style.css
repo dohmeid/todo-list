@@ -1,3 +1,4 @@
+/*************************** custom css style ********************************/
 :root {
     --grey-shade: rgb(119, 118, 118);
     --medium-grey: darkgrey;
@@ -6,6 +7,7 @@
     --green-tick: #4CBB17;
 }
 
+/*************************** general styles ********************************/
 * {
     margin: 0;
     padding: 0;
@@ -22,8 +24,6 @@ body {
     flex-direction: column;
     align-items: center;
     font-family: 'Trebuchet MS', sans-serif;
-    height: 100%;
-    width: 100%;
 }
 
 button,
@@ -32,17 +32,33 @@ label {
     cursor: pointer;
 }
 
-/******************************************************************/
-/*styling the header*/
-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 3rem;
+button {
+    color: white;
+    padding: 0.35rem 0.6rem;
+    border-radius: 0.3rem;
+    border: 2px solid transparent;
+    font-size: 1rem;
+
+    &:hover {
+        opacity: 0.7;
+        border: 2px solid lightgrey;
+        transition: 0.7s;
+    }
+
+    &:focus {
+        /*for keyboard interactions*/
+        border-color: var(--medium-grey);
+    }
 }
 
-/******************************************************************/
-/*styling the form*/
+/*************************** header style ********************************/
+header {
+    margin-top: 4rem;
+    text-align: center;
+    font-size: 1.25rem;
+}
+
+/*************************** header style ********************************/
 form {
     display: flex;
     flex-direction: column;
@@ -51,12 +67,26 @@ form {
     text-align: center;
     margin: 2rem 0;
 
+    & legend {
+        /*hide the fieldset legend*/
+        display: none;
+    }
+
+    & fieldset {
+        /*hide the form fieldset borders*/
+        border: none;
+    }
+
     & .addition-container {
         margin-bottom: 1rem;
 
         & input[type="text"] {
             min-height: 2em;
             width: 15rem;
+        }
+
+        & .addBtn {
+            background-color: red;
         }
     }
 
@@ -78,13 +108,11 @@ form {
     }
 }
 
-/******************************************************************/
-/*styling the tasks table*/
+/*************************** header style ********************************/
 table {
     width: 90%;
     border-collapse: collapse;
 
-    /*table header*/
     & thead {
         height: 2rem;
         background-color: var(--light-grey-shade);
@@ -92,7 +120,6 @@ table {
         & tr th {
             text-align: center;
         }
-
 
         & th:nth-child(1) {
             width: 5%;
@@ -116,7 +143,6 @@ table {
 
     }
 
-    /*table body*/
     & tbody {
 
         & tr {
@@ -127,57 +153,71 @@ table {
             td {
                 text-align: center;
             }
+
+            & .deleteBtn {
+                background-color: red;
+            }
+
+            & .doneBtn {
+                background-color: var(--green-tick);
+            }
         }
 
         & .completed-task td:nth-child(2) {
             text-decoration: line-through;
+            color: var(--medium-grey);
         }
     }
 
     & tfoot td {
         padding-top: 2rem;
+        padding-bottom: 4rem;
         text-align: center;
     }
 
 }
 
-/******************************************************************/
-/*actions buttons*/
-button {
-    color: white;
-    padding: 0.35rem 0.6rem;
-    border-radius: 0.3rem;
-    border: 2px solid transparent;
 
-    &:hover {
-        opacity: 0.7;
-        border: 2px solid lightgrey;
-        transition: 0.7s;
+/*********************************************************************************/
+/*************************** media queries styles ********************************/
+/*for mobile phones*/
+@media (max-width: 550px) {
+
+    html {
+        font-size: 10px;
     }
 
-    &:focus {
-        /*for keyboard interactions*/
-        border-color: var(--medium-grey);
+    table {
+        width: 97%;
+
+        & thead {
+            height: 3rem;
+        }
+
+        & tbody {
+
+            & tr {
+                height: 4rem;
+
+                & button {
+                    padding: 0.25rem 0.4rem;
+                    border-radius: 0.3rem;
+                    border: 2px solid transparent;
+                }
+            }
+
+            & .completed-task td:nth-child(2) {
+                text-decoration: line-through;
+                color: var(--medium-grey);
+            }
+        }
     }
 }
 
-.addBtn,
-.deleteBtn {
-    background-color: red;
-}
+/*for tablets*/
+@media (min-width: 550px) and (max-width: 900px) {
 
-.doneBtn {
-    background-color: var(--green-tick);
-}
-
-/******************************************************************/
-/*media queries*/
-@media (max-width: 600px) {
-    body {
-        font-size: 8px;
-    }
-
-    form {
-        width: 300px;
+    html {
+        font-size: 12px;
     }
 }

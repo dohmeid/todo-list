@@ -10,12 +10,7 @@
         It implements a user-friendly interface that allows users to add, update, and remove TODO items. 
         It also interacts with the a dummy API to retrieve the initial TODO list.">
     <meta name="keywords" content="todo-list, list, tasks, management, addition, searching, CRUD operations">
-
-
     <link rel="icon" type="image/x-icon" sizes="16x16 32x32 48x48" href="assets/images/list.ico">
-    <!--including font awesome v4 icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 
@@ -24,17 +19,22 @@
         <h1>TODO List</h1>
     </header>
 
+    <!--Inputs' form-->
     <form>
         <!--Adding a new task input-->
-        <div class="addition-container">
+        <fieldset class="addition-container">
+            <legend>Add a New Task</legend>
             <input type="text" id="new-task-input" class="new-task-input" name="new-task-input"
                 aria-label="input for creating a new task" placeholder="Add new task..." tabindex="1">
-            <button type="button" id="addBtn" class="addBtn" tabindex="10" onclick="addTask()">Add</button>
-        </div>
+            <button type="button" id="addBtn" class="addBtn" tabindex="2" onclick="addTask()">Add</button>
+        </fieldset>
 
         <!--Search Bar-->
-        <input type="search" id="search" class="search" name="search" aria-label="search for a task"
-            placeholder="Search tasks..." tabindex="1" onkeyup="searchTask()">
+        <fieldset>
+            <legend>Search Tasks</legend>
+            <input type="search" id="search" class="search" name="search" aria-label="search for a task"
+                placeholder="Search tasks..." tabindex="2" onkeyup="searchTask()">
+        </fieldset>
     </form>
 
 
@@ -49,6 +49,7 @@
                 <th scope="col">Actions</th>
             </tr>
         </thead>
+
         <tbody id="table-body">
             <tr>
                 <td>1</td>
@@ -57,17 +58,6 @@
                 <td>Pending</td>
                 <td>
                     <button type="button" class="deleteBtn">Delete</button>
-                    <button type="submit" class="doneBtn">Done</button>
-                </td>
-            </tr>
-
-            <tr class="completed-task">
-                <td>2</td>
-                <td>Buy groceries for next week</td>
-                <td>22</td>
-                <td>Completed</td>
-                <td>
-                    <button type="submit" class="deleteBtn">Delete</button>
                     <button type="submit" class="doneBtn">Done</button>
                 </td>
             </tr>
