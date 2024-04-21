@@ -5,12 +5,12 @@ const searchBar = document.getElementById("search");
 const table = document.getElementById("table-body");
 const counter = document.getElementById("tasks-counter");
 
-var tasksArray = []; //this array contains all the todo list tasks
+let tasksArray = []; //this array contains all the todo list tasks
 
 //****************************EVENT LISTENERS****************************
 /* on the first window load, fetch data from API and save it in sessionStorage
    on further loads, fetch the data from sessionStorage */
-window.onload = () => {
+window.addEventListener("load", () => {
   if (!sessionStorage.getItem("visited")) {
     sessionStorage.setItem("visited", true); // Set visited flag in sessionStorage
     fetchData();
@@ -21,19 +21,19 @@ window.onload = () => {
       displayTasks(tasksArray);
     }
   }
-};
+});
 
 //search for a task
-searchBar.onkeyup = () => {
+searchBar.addEventListener("keyup", () => {
   let searchQuery = searchBar.value.toLowerCase(); //get the search query
   let filteredTasksArray = tasksArray.filter((task) =>
     task.todo.toLowerCase().includes(searchQuery)
   );
   displayTasks(filteredTasksArray);
-};
+});
 
 //add a new task
-addTaskBtn.onclick = () => {
+addTaskBtn.addEventListener("click", () => {
   let newTask = newTaskInput.value.trim();
   if (!newTask) {
     alert("Please enter the task");
@@ -49,10 +49,10 @@ addTaskBtn.onclick = () => {
   saveToSessionStorage();
   displayTasks(tasksArray);
   newTaskInput.value = ""; //clear the newTaskInput
-};
+});
 
 //here event delegation was used to handle the click events (delete and done buttons for each task)
-table.onclick = (e) => {
+table.addEventListener("click", (e) => {
   let row = e.target.closest("tr"); //get the row where that the button was clicked
   let rowIndex = row.rowIndex - 1;
 
@@ -67,11 +67,11 @@ table.onclick = (e) => {
     saveToSessionStorage();
     displayTasks(tasksArray);
   }
-};
+});
 
 //****************************FUNCTIONS**********************************
 //fetch the data from the given API and save it in tasksArray
-async function fetchData() {
+const fetchData = async function () {
   try {
     const response = await fetch("https://dummyjson.com/todos");
     if (!response.ok) {
@@ -86,12 +86,13 @@ async function fetchData() {
   } catch (error) {
     console.error("Error in fetch operation:", error);
   }
-}
+};
 
 //display the tasks from the tasks array to the todo list table
-function displayTasks(array) {
+const displayTasks = (array) => {
   table.innerHTML = "";
   let i = 1;
+
   for (let task of array) {
     let row = document.createElement("tr");
     let state = "Pending";
@@ -112,9 +113,9 @@ function displayTasks(array) {
   }
 
   counter.textContent = array.length; //update the counter
-}
+};
 
 //save the tasks array to sessionStorage to persist it across page refreshes
-function saveToSessionStorage() {
+const saveToSessionStorage = () => {
   sessionStorage.setItem("savedTasks", JSON.stringify(tasksArray));
-}
+};
