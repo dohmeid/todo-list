@@ -27,5 +27,5 @@ The web app interacts with the a dummy API to retrieve the initial TODO list.
 </div>
 
 ### :eye: Demo
-You can access a live demo of this application here -> (still under development)
+You can access a live demo of this application here -> https://dohmeid.github.io/todo-list/
 
