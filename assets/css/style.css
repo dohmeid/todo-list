@@ -95,6 +95,7 @@ form {
         border-radius: 0.2rem;
         border: 1px solid var(--medium-grey);
         padding-inline-start: 0.8rem;
+        font-size: 1rem;
 
         &::placeholder {
             color: var(--grey-shade);
@@ -114,7 +115,7 @@ table {
     border-collapse: collapse;
 
     & thead {
-        height: 2rem;
+        height: 3rem;
         background-color: var(--light-grey-shade);
 
         & tr th {
@@ -180,8 +181,16 @@ table {
 
 /*********************************************************************************/
 /*************************** media queries styles ********************************/
+/*for extra small devices*/
+@media (max-width: 350px) {
+
+    html {
+        font-size: 6px;
+    }
+}
+
 /*for mobile phones*/
-@media (max-width: 550px) {
+@media (min-width: 350px) and (max-width: 550px) {
 
     html {
         font-size: 10px;

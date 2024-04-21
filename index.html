@@ -26,14 +26,14 @@
             <legend>Add a New Task</legend>
             <input type="text" id="new-task-input" class="new-task-input" name="new-task-input"
                 aria-label="input for creating a new task" placeholder="Add new task..." tabindex="1">
-            <button type="button" id="addBtn" class="addBtn" tabindex="2" onclick="addTask()">Add</button>
+            <button type="button" id="addBtn" class="addBtn" tabindex="2">Add</button>
         </fieldset>
 
         <!--Search Bar-->
         <fieldset>
             <legend>Search Tasks</legend>
             <input type="search" id="search" class="search" name="search" aria-label="search for a task"
-                placeholder="Search tasks..." tabindex="2" onkeyup="searchTask()">
+                placeholder="Search tasks..." tabindex="2">
         </fieldset>
     </form>
 
@@ -51,16 +51,7 @@
         </thead>
 
         <tbody id="table-body">
-            <tr>
-                <td>1</td>
-                <td>Buy groceries for next week</td>
-                <td>22</td>
-                <td>Pending</td>
-                <td>
-                    <button type="button" class="deleteBtn">Delete</button>
-                    <button type="submit" class="doneBtn">Done</button>
-                </td>
-            </tr>
+            <!-- here the tr for the todo tasks are going to be added-->
         </tbody>
 
         <tfoot>
