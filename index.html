@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO List</title>
+    <meta name="author" content="Doha Hmeid">
+    <meta name="description" content="TODO List web application with various features to manage tasks efficiently.
+        It implements a user-friendly interface that allows users to add, update, and remove TODO items. 
+        It also interacts with the a dummy API to retrieve the initial TODO list.">
+    <meta name="keywords" content="todo-list, list, tasks, management, addition, searching, CRUD operations">
+    <link rel="icon" type="image/x-icon" sizes="16x16 32x32 48x48" href="./assets/images/list.ico">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>TODO List</h1>
+    </header>
+
+    <!--Inputs' form-->
+    <form>
+        <!--Adding a new task input-->
+        <fieldset class="addition-container">
+            <legend>Add a New Task</legend>
+            <input type="text" id="new-task-input" class="new-task-input" name="new-task-input"
+                aria-label="input for creating a new task" placeholder="Add new task..." tabindex="1">
+            <button type="button" id="addBtn" class="addBtn" tabindex="2">Add</button>
+        </fieldset>
+
+        <!--Search Bar-->
+        <fieldset>
+            <legend>Search Tasks</legend>
+            <input type="search" id="search" class="search" name="search" aria-label="search for a task"
+                placeholder="Search tasks..." tabindex="2">
+        </fieldset>
+    </form>
+
+
+    <!--Tasks Table-->
+    <table id="tasks-table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">TODO Description</th>
+                <th scope="col">User ID</th>
+                <th scope="col">Status</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+
+        <tbody id="table-body">
+            <!-- here the tr for the todo tasks are going to be added-->
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td colspan="5">Total tasks:
+                    <span id="tasks-counter">0</span>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <script type="text/javascript" src="assets/js/script.js"></script>
+</body>
+
+</html>

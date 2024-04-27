@@ -1,0 +1,232 @@
+/*************************** custom css style ********************************/
+:root {
+    --grey-shade: rgb(119, 118, 118);
+    --medium-grey: darkgrey;
+    --medium-grey2: rgb(223, 222, 222);
+    --light-grey-shade: rgb(239, 238, 238);
+    --green-tick: #4CBB17;
+}
+
+/*************************** general styles ********************************/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Trebuchet MS', sans-serif;
+}
+
+button,
+input,
+label {
+    cursor: pointer;
+}
+
+button {
+    color: white;
+    padding: 0.35rem 0.6rem;
+    border-radius: 0.3rem;
+    border: 2px solid transparent;
+    font-size: 1rem;
+
+    &:hover {
+        opacity: 0.7;
+        border: 2px solid lightgrey;
+        transition: 0.7s;
+    }
+
+    &:focus {
+        /*for keyboard interactions*/
+        border-color: var(--medium-grey);
+    }
+}
+
+/*************************** header style ********************************/
+header {
+    margin-top: 4rem;
+    text-align: center;
+    font-size: 1.25rem;
+}
+
+/*************************** header style ********************************/
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 2rem 0;
+
+    & legend {
+        /*hide the fieldset legend*/
+        display: none;
+    }
+
+    & fieldset {
+        /*hide the form fieldset borders*/
+        border: none;
+    }
+
+    & .addition-container {
+        margin-bottom: 1rem;
+
+        & input[type="text"] {
+            min-height: 2em;
+            width: 15rem;
+        }
+
+        & .addBtn {
+            background-color: red;
+        }
+    }
+
+    & input[type="search"],
+    input[type="text"] {
+        border-radius: 0.2rem;
+        border: 1px solid var(--medium-grey);
+        padding-inline-start: 0.8rem;
+        font-size: 1rem;
+
+        &::placeholder {
+            color: var(--grey-shade);
+            opacity: 0.9;
+        }
+    }
+
+    & input[type="search"] {
+        min-height: 2.4em;
+        width: 30rem;
+    }
+}
+
+/*************************** header style ********************************/
+table {
+    width: 90%;
+    border-collapse: collapse;
+
+    & thead {
+        height: 3rem;
+        background-color: var(--light-grey-shade);
+
+        & tr th {
+            text-align: center;
+        }
+
+        & th:nth-child(1) {
+            width: 5%;
+        }
+
+        & th:nth-child(2) {
+            width: 50%;
+        }
+
+        & th:nth-child(3) {
+            width: 10%;
+        }
+
+        & th:nth-child(4) {
+            width: 10%;
+        }
+
+        & th:nth-child(5) {
+            width: 30%;
+        }
+
+    }
+
+    & tbody {
+
+        & tr {
+            height: 3rem;
+            border-bottom: 1px solid var(--medium-grey2);
+
+            & th,
+            td {
+                text-align: center;
+            }
+
+            & .deleteBtn {
+                background-color: red;
+            }
+
+            & .doneBtn {
+                background-color: var(--green-tick);
+            }
+        }
+
+        & .completed-task td:nth-child(2) {
+            text-decoration: line-through;
+            color: var(--medium-grey);
+        }
+    }
+
+    & tfoot td {
+        padding-top: 2rem;
+        padding-bottom: 4rem;
+        text-align: center;
+    }
+
+}
+
+
+/*********************************************************************************/
+/*************************** media queries styles ********************************/
+/*for extra small devices*/
+@media (max-width: 350px) {
+
+    html {
+        font-size: 6px;
+    }
+}
+
+/*for mobile phones*/
+@media (min-width: 350px) and (max-width: 550px) {
+
+    html {
+        font-size: 10px;
+    }
+
+    table {
+        width: 97%;
+
+        & thead {
+            height: 3rem;
+        }
+
+        & tbody {
+
+            & tr {
+                height: 4rem;
+
+                & button {
+                    padding: 0.25rem 0.4rem;
+                    border-radius: 0.3rem;
+                    border: 2px solid transparent;
+                }
+            }
+
+            & .completed-task td:nth-child(2) {
+                text-decoration: line-through;
+                color: var(--medium-grey);
+            }
+        }
+    }
+}
+
+/*for tablets*/
+@media (min-width: 550px) and (max-width: 900px) {
+
+    html {
+        font-size: 12px;
+    }
+}
